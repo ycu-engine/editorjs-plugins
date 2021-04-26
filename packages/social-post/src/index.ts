@@ -1,8 +1,8 @@
-import { BlockToolConstructorOptions } from '@editorjs/editorjs'
 import PluginIcon from './assets/plugin-icon.svg'
 import './index.css'
 import {
   SocialPostPlugin,
+  SocialPostPluginConstructorOptions,
   SocialPostPluginData,
   SocialPostPluginMediaPlatform,
 } from './plugins-type'
@@ -10,11 +10,21 @@ import { createTwitterPost } from './posts'
 import { createMainBlock } from './ui'
 
 export default class SocialPost implements SocialPostPlugin {
-  data: SocialPostPluginData
+  data: SocialPostPluginConstructorOptions['data']
   wrapper: HTMLDivElement | null
   url: string
   selectedSocialMedia: SocialPostPluginMediaPlatform
-  constructor({ data }: BlockToolConstructorOptions<SocialPostPluginData>) {
+  api: SocialPostPluginConstructorOptions['api']
+  readonly: SocialPostPluginConstructorOptions['readOnly']
+  block: SocialPostPluginConstructorOptions['block']
+  config: SocialPostPluginConstructorOptions['config']
+  constructor({
+    data,
+    api,
+    readOnly,
+    block,
+    config,
+  }: SocialPostPluginConstructorOptions) {
     this.data = data
     /**
      * Container for the entire block
@@ -26,6 +36,10 @@ export default class SocialPost implements SocialPostPlugin {
      */
     this.url = ''
     this.selectedSocialMedia = 'Twitter'
+    this.api = api
+    this.readonly = readOnly
+    this.block = block
+    this.config = config
   }
 
   static get toolbox(): { icon: string; title: string } {
