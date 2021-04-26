@@ -9,8 +9,9 @@ export interface SocialPostPluginData {
   url: string
   caption?: string
 }
+export declare type SocialPostPluginConstructorOptions = BlockToolConstructorOptions<SocialPostPluginData>
 export interface SocialPostPluginConstructable extends BlockToolConstructable {
-  new (config: BlockToolConstructorOptions<SocialPostPluginData>): BlockTool
+  new (config: SocialPostPluginConstructorOptions): SocialPostPlugin
 }
 export interface SocialPostPlugin extends BlockTool {
   data: SocialPostPluginData

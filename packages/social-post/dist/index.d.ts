@@ -1,16 +1,26 @@
-import { BlockToolConstructorOptions } from '@editorjs/editorjs'
 import './index.css'
 import {
   SocialPostPlugin,
+  SocialPostPluginConstructorOptions,
   SocialPostPluginData,
   SocialPostPluginMediaPlatform,
 } from './plugins-type'
 export default class SocialPost implements SocialPostPlugin {
-  data: SocialPostPluginData
+  data: SocialPostPluginConstructorOptions['data']
   wrapper: HTMLDivElement | null
   url: string
   selectedSocialMedia: SocialPostPluginMediaPlatform
-  constructor({ data }: BlockToolConstructorOptions<SocialPostPluginData>)
+  api: SocialPostPluginConstructorOptions['api']
+  readonly: SocialPostPluginConstructorOptions['readOnly']
+  block: SocialPostPluginConstructorOptions['block']
+  config: SocialPostPluginConstructorOptions['config']
+  constructor({
+    data,
+    api,
+    readOnly,
+    block,
+    config,
+  }: SocialPostPluginConstructorOptions)
   static get toolbox(): {
     icon: string
     title: string

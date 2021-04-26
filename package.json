@@ -14,7 +14,8 @@
     "lint": "lerna run lint",
     "pre-commit": "lint-staged && run-p lint type-check",
     "postinstall": "lerna run typesync",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "yarn build && lerna publish"
   },
   "devDependencies": {
     "@editorjs/editorjs": "^2.20.2",
