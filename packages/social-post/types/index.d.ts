@@ -6,7 +6,10 @@ export default class SocialPost implements SocialPostPlugin {
     url: string;
     selectedSocialMedia: SocialPostPluginMediaPlatform;
     constructor({ data }: SocialPostPluginConstructorOptions);
-    toolbox: {};
+    static get toolbox(): {
+        icon: string;
+        title: string;
+    };
     hasUrl(obj: Record<string, any>): obj is {
         url: string;
     };

@@ -1,3 +1,4 @@
+import PluginIcon from './assets/plugin-icon.svg'
 import './index.css'
 import {
   SocialPostPlugin,
@@ -28,14 +29,12 @@ export default class SocialPost implements SocialPostPlugin {
     this.selectedSocialMedia = 'Twitter'
   }
 
-  toolbox = {}
-
-  // static get toolbox(): { icon: string; title: string } {
-  //   return {
-  //     icon: PluginIcon,
-  //     title: 'Social Post',
-  //   }
-  // }
+  static get toolbox(): { icon: string; title: string } {
+    return {
+      icon: PluginIcon,
+      title: 'Social Post',
+    }
+  }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   hasUrl(obj: Record<string, any>): obj is { url: string } {
