@@ -1,0 +1,32 @@
+{
+  "name": "@ycu-engine-editorjs-plugins/social-post",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "keywords": [
+    "editorjs"
+  ],
+  "author": "YutaUra <yuuta3594@outlook.jp>",
+  "homepage": "https://github.com/ycu-engine/editorjs-plugins#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ycu-engine/editorjs-plugins.git"
+  },
+  "scripts": {
+    "build": "webpack",
+    "type-check": "tsc --noEmit",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/ycu-engine/editorjs-plugins/issues"
+  }
+}
