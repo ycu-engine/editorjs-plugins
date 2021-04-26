@@ -1,1 +1,1 @@
-export { createMainBlock } from './main-block'
+export { createMainBlock } from './main-block';
