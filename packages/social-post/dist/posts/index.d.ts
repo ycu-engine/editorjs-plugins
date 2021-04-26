@@ -1,1 +1,0 @@
-export { createTwitterPost } from './twitter';

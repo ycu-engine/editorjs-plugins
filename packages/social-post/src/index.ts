@@ -1,4 +1,3 @@
-import PluginIcon from './assets/plugin-icon.svg'
 import './index.css'
 import {
   SocialPostPlugin,
@@ -10,21 +9,12 @@ import { createTwitterPost } from './posts'
 import { createMainBlock } from './ui'
 
 export default class SocialPost implements SocialPostPlugin {
-  data: SocialPostPluginConstructorOptions['data']
+  data?: SocialPostPluginData
   wrapper: HTMLDivElement | null
   url: string
   selectedSocialMedia: SocialPostPluginMediaPlatform
-  api: SocialPostPluginConstructorOptions['api']
-  readonly: SocialPostPluginConstructorOptions['readOnly']
-  block: SocialPostPluginConstructorOptions['block']
-  config: SocialPostPluginConstructorOptions['config']
-  constructor({
-    data,
-    api,
-    readOnly,
-    block,
-    config,
-  }: SocialPostPluginConstructorOptions) {
+
+  constructor({ data }: SocialPostPluginConstructorOptions) {
     this.data = data
     /**
      * Container for the entire block
@@ -36,18 +26,16 @@ export default class SocialPost implements SocialPostPlugin {
      */
     this.url = ''
     this.selectedSocialMedia = 'Twitter'
-    this.api = api
-    this.readonly = readOnly
-    this.block = block
-    this.config = config
   }
 
-  static get toolbox(): { icon: string; title: string } {
-    return {
-      icon: PluginIcon,
-      title: 'Social Post',
-    }
-  }
+  toolbox = {}
+
+  // static get toolbox(): { icon: string; title: string } {
+  //   return {
+  //     icon: PluginIcon,
+  //     title: 'Social Post',
+  //   }
+  // }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   hasUrl(obj: Record<string, any>): obj is { url: string } {

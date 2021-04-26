@@ -4,18 +4,14 @@ import {
   BlockToolConstructable,
   ToolConfig,
 } from '@editorjs/editorjs'
-
-export type SocialPostPluginMediaPlatform = 'Twitter'
-
+export declare type SocialPostPluginMediaPlatform = 'Twitter'
 export interface SocialPostPluginData {
   socialMediaPlatform: SocialPostPluginMediaPlatform
   url: string
   caption?: string
 }
-
-export type SocialPostPluginOption = Record<string, never>
-
-export type SocialPostPluginConstructorOptions = {
+export declare type SocialPostPluginOption = Record<string, never>
+export declare type SocialPostPluginConstructorOptions = {
   api: API
   config?: ToolConfig<SocialPostPluginOption>
   data?: SocialPostPluginData
@@ -23,12 +19,10 @@ export type SocialPostPluginConstructorOptions = {
 export interface SocialPostPluginConstructable extends BlockToolConstructable {
   new (config: SocialPostPluginConstructorOptions): SocialPostPlugin
 }
-
 export interface SocialPostPlugin extends BlockTool {
   data?: SocialPostPluginData
   url: string
   wrapper: HTMLDivElement | null
   selectedSocialMedia: SocialPostPluginMediaPlatform
-
   createTwitterPost(url: string, caption: string): Promise<void>
 }
