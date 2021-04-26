@@ -1,1 +1,1 @@
-export { createTwitterPost } from './twitter'
+export { createTwitterPost } from './twitter';

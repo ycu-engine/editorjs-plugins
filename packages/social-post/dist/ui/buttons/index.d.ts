@@ -1,1 +1,1 @@
-export { createTwitterButton } from './twitter'
+export { createTwitterButton } from './twitter';
