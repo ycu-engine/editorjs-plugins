@@ -16,5 +16,5 @@
     "max-lines": "off",
     "max-statements": "off"
   },
-  "ignorePatterns": ["webpack.config.ts", "dist"]
+  "ignorePatterns": ["webpack.config.ts", "dist", "types"]
 }
