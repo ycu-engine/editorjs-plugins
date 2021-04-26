@@ -103,18 +103,20 @@ const getTwitterPostFromURL = async (
 
 const setUpTwitterElement = (
   innerHTML: string,
-  caption: string,
   elm: HTMLDivElement,
+  caption?: string,
 ): void => {
   elm.id = 'twitter-post-wrapper'
   elm.classList.add('post-wrapper')
   // Returns the iframe representing the post.
   elm.innerHTML = innerHTML
   // Appending the user provided caption.
-  const captionContainer = document.createElement('div')
-  captionContainer.id = 'caption-container'
-  captionContainer.textContent = caption
-  elm.appendChild(captionContainer)
+  if (caption) {
+    const captionContainer = document.createElement('div')
+    captionContainer.id = 'caption-container'
+    captionContainer.textContent = caption
+    elm.appendChild(captionContainer)
+  }
 }
 
 /**
@@ -125,7 +127,7 @@ const setUpTwitterElement = (
 export const createTwitterPost = async (
   pluginObj: SocialPostPlugin,
   url: string,
-  caption: string,
+  caption?: string,
 ): Promise<void> => {
   const innerHTML = await getTwitterPostFromURL(pluginObj, url)
   try {
@@ -133,12 +135,12 @@ export const createTwitterPost = async (
     // If postWarpper does not already exist create one.
     if (postWrapper === null || !(postWrapper instanceof HTMLDivElement)) {
       const div = document.createElement('div')
-      setUpTwitterElement(innerHTML, caption, div)
+      setUpTwitterElement(innerHTML, div, caption)
       pluginObj.wrapper?.appendChild?.(div)
     }
     // If postWrapper already exists, change its update its content i.e. post and caption.
     else {
-      setUpTwitterElement(innerHTML, caption, postWrapper)
+      setUpTwitterElement(innerHTML, postWrapper, caption)
     }
   } catch (error) {
     console.error(error)

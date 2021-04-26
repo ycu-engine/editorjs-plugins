@@ -19,6 +19,7 @@ export type SocialPostPluginConstructorOptions = {
   api: API
   config?: ToolConfig<SocialPostPluginOption>
   data?: SocialPostPluginData
+  readOnly?: boolean
 }
 export interface SocialPostPluginConstructable extends BlockToolConstructable {
   new (config: SocialPostPluginConstructorOptions): SocialPostPlugin
@@ -27,8 +28,9 @@ export interface SocialPostPluginConstructable extends BlockToolConstructable {
 export interface SocialPostPlugin extends BlockTool {
   data?: SocialPostPluginData
   url: string
-  wrapper: HTMLDivElement | null
+  wrapper: HTMLDivElement
   selectedSocialMedia: SocialPostPluginMediaPlatform
+  readOnly: boolean
 
-  createTwitterPost(url: string, caption: string): Promise<void>
+  createTwitterPost(url: string, caption?: string): Promise<void>
 }

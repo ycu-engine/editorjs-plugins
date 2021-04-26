@@ -34,6 +34,7 @@ const createPreviewButton = (): HTMLButtonElement => {
   previewBtn.innerHTML = 'Preview'
   previewBtn.classList.add('cdx-button')
   previewBtn.style.margin = 'margin: 12px 0 20px 0;'
+  previewBtn.setAttribute('type', 'button')
   return previewBtn
 }
 

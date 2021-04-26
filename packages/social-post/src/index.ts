@@ -10,23 +10,30 @@ import { createTwitterPost } from './posts'
 import { createMainBlock } from './ui'
 
 export default class SocialPost implements SocialPostPlugin {
+  static get isReadOnlySupported(): boolean {
+    return true
+  }
+
   data?: SocialPostPluginData
-  wrapper: HTMLDivElement | null
+  wrapper: HTMLDivElement
   url: string
   selectedSocialMedia: SocialPostPluginMediaPlatform
+  readOnly: boolean
 
-  constructor({ data }: SocialPostPluginConstructorOptions) {
+  constructor({ data, readOnly }: SocialPostPluginConstructorOptions) {
     this.data = data
     /**
      * Container for the entire block
      */
-    this.wrapper = null
+    this.wrapper = document.createElement('div')
+    this.wrapper.classList.add('wrapper')
 
     /**
      * URL of the social media post
      */
     this.url = ''
     this.selectedSocialMedia = 'Twitter'
+    this.readOnly = readOnly || false
   }
 
   static get toolbox(): { icon: string; title: string } {
@@ -59,8 +66,7 @@ export default class SocialPost implements SocialPostPlugin {
 
   render(): HTMLDivElement {
     try {
-      this.wrapper = createMainBlock(this)
-
+      createMainBlock(this)
       return this.wrapper
     } catch (error) {
       console.error(error)
@@ -68,7 +74,7 @@ export default class SocialPost implements SocialPostPlugin {
     }
   }
 
-  async createTwitterPost(url: string, caption: string): Promise<void> {
+  async createTwitterPost(url: string, caption?: string): Promise<void> {
     await createTwitterPost(this, url, caption)
   }
 

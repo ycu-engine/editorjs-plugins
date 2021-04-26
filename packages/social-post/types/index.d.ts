@@ -1,11 +1,13 @@
 import './index.css';
 import { SocialPostPlugin, SocialPostPluginConstructorOptions, SocialPostPluginData, SocialPostPluginMediaPlatform } from './plugins-type';
 export default class SocialPost implements SocialPostPlugin {
+    static get isReadOnlySupported(): boolean;
     data?: SocialPostPluginData;
-    wrapper: HTMLDivElement | null;
+    wrapper: HTMLDivElement;
     url: string;
     selectedSocialMedia: SocialPostPluginMediaPlatform;
-    constructor({ data }: SocialPostPluginConstructorOptions);
+    readOnly: boolean;
+    constructor({ data, readOnly }: SocialPostPluginConstructorOptions);
     static get toolbox(): {
         icon: string;
         title: string;
@@ -20,6 +22,6 @@ export default class SocialPost implements SocialPostPlugin {
      */
     validate(savedData: unknown): boolean;
     render(): HTMLDivElement;
-    createTwitterPost(url: string, caption: string): Promise<void>;
+    createTwitterPost(url: string, caption?: string): Promise<void>;
     save(blockContent: HTMLElement): SocialPostPluginData;
 }
