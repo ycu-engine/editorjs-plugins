@@ -1,6 +1,6 @@
 {
   "extends": [
-    "eslint:all",
+    "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
@@ -8,5 +8,13 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "project": ["./tsconfig.json"]
-  }
+  },
+  "rules": {
+    "no-console": ["error", { "allow": ["error", "warn"] }],
+    "one-var": "off",
+    "sort-imports": "off",
+    "max-lines": "off",
+    "max-statements": "off"
+  },
+  "ignorePatterns": ["webpack.config.ts"]
 }
